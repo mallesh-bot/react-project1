@@ -1,0 +1,430 @@
+/* ── Google Fonts ─────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ── Reset & CSS Variables ────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:        #0d0d0d;
+  --surface:   #161616;
+  --border:    #2a2a2a;
+  --gold:      #e8c96d;
+  --gold-dim:  #9e883f;
+  --red:       #e8556d;
+  --text:      #f0ede6;
+  --muted:     #888;
+  --radius:    16px;
+}
+
+/* ── Body ─────────────────────────────────────────────────────── */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 16px 80px;
+}
+
+/* ── Animations ───────────────────────────────────────────────── */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50%       { opacity: 1;   transform: scale(1.1); }
+}
+
+/* ── Layout ───────────────────────────────────────────────────── */
+.app-wrapper {
+  width: 100%;
+  max-width: 620px;
+}
+
+/* ── Header ───────────────────────────────────────────────────── */
+.app-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.app-header__eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.app-header__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 7vw, 3.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.app-header__badge {
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #1a1a1a;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  padding: 6px 16px;
+  font-size: 13px;
+}
+
+.app-header__badge-count {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.app-header__badge-label {
+  color: var(--muted);
+}
+
+/* ── Quote Card (widget) ──────────────────────────────────────── */
+.quote-card {
+  border-radius: 24px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  animation: slideUp 0.5s ease both;
+}
+
+/* header strip */
+.quote-card__header {
+  background: #e8ddd0;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.quote-card__calendar {
+  background: #fff;
+  border-radius: 10px;
+  padding: 4px 10px;
+  text-align: center;
+  min-width: 44px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.10);
+}
+
+.quote-card__calendar-day {
+  font-size: 9px;
+  font-weight: 700;
+  color: #c0392b;
+  letter-spacing: 0.08em;
+}
+
+.quote-card__calendar-num {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.1;
+}
+
+.quote-card__title {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: #2c2c2c;
+  letter-spacing: -0.01em;
+}
+
+/* body gradient */
+.quote-card__body {
+  background: linear-gradient(160deg, #f0c9a0 0%, #e8a87c 55%, #d4845a 100%);
+  padding: 28px 24px 22px;
+  position: relative;
+  min-height: 160px;
+}
+
+/* loading */
+.quote-card__loading {
+  text-align: center;
+  padding: 28px 0;
+}
+
+.quote-card__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.quote-card__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  display: inline-block;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.quote-card__loading-text {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+}
+
+/* error */
+.quote-card__error {
+  color: #7a1a1a;
+  font-size: 14px;
+  padding: 20px 0;
+}
+
+/* quote text */
+.quote-card__quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2.8vw, 1.2rem);
+  line-height: 1.7;
+  color: #2c1a0e;
+  margin-bottom: 18px;
+}
+
+.quote-card__author {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(44, 26, 14, 0.65);
+  margin-bottom: 18px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* empty */
+.quote-card__empty {
+  color: rgba(44, 26, 14, 0.5);
+  padding: 20px 0;
+  font-size: 14px;
+}
+
+/* bottom row */
+.quote-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.quote-card__indicator-row {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.quote-card__indicator {
+  height: 7px;
+  border-radius: 4px;
+  display: inline-block;
+  transition: width 0.3s;
+}
+
+.quote-card__indicator--active {
+  width: 18px;
+  background: #2c1a0e;
+}
+
+.quote-card__indicator--inactive {
+  width: 7px;
+  background: rgba(44, 26, 14, 0.25);
+}
+
+.quote-card__close-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px;
+  line-height: 1;
+  color: rgba(210, 120, 70, 0.45);
+  user-select: none;
+  margin-bottom: -8px;
+}
+
+/* ── Action Buttons ───────────────────────────────────────────── */
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.btn-new {
+  flex: 1;
+  padding: 14px 20px;
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold-dim);
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-new:hover:not(:disabled) {
+  background: var(--gold);
+  color: #0d0d0d;
+  cursor: pointer;
+}
+
+.btn-new:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-like {
+  padding: 14px 24px;
+  border: 1px solid var(--red);
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-like:hover:not(:disabled) {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.btn-like:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-like--active {
+  background: var(--red);
+  color: #fff;
+}
+
+.btn-like--inactive {
+  background: transparent;
+  color: var(--red);
+}
+
+/* ── Toggle Button ────────────────────────────────────────────── */
+.btn-toggle {
+  width: 100%;
+  padding: 13px;
+  background: #111;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--muted);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  transition: color 0.2s;
+  letter-spacing: 0.03em;
+}
+
+.btn-toggle:hover {
+  color: var(--text);
+}
+
+.btn-toggle--open {
+  margin-bottom: 16px;
+}
+
+/* ── Liked Panel ──────────────────────────────────────────────── */
+.liked-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  animation: slideUp 0.3s ease both;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 14px;
+  background: #111;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  margin-bottom: 16px;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--gold-dim);
+}
+
+.liked-empty {
+  color: var(--muted);
+  text-align: center;
+  padding: 16px 0;
+  font-size: 14px;
+}
+
+.liked-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.liked-item {
+  background: #111;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  transition: background 0.2s;
+}
+
+.liked-item:hover {
+  background: #1e1e1e;
+}
+
+.liked-item__text {
+  flex: 1;
+}
+
+.liked-item__quote {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text);
+  margin-bottom: 6px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  display: block;
+}
+
+.liked-item__author {
+  font-size: 12px;
+  color: var(--gold-dim);
+  display: block;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1;
+  transition: color 0.2s;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.remove-btn:hover {
+  color: var(--red);
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: #333; border-radius: 4px; }
